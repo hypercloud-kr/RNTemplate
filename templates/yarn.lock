@@ -15,6 +15,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@azesmway/react-native-unity@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "@azesmway/react-native-unity@npm:1.0.9"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 41ba269a0aa7c0f2b816aa94bafab9325d2c6ebc3797a659b621c2ff16f431b002071cdb3b4ac65d3a572ee5abeeb0dee827f29fabbe8d705e313f120e4d3d23
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.23.5, @babel/code-frame@npm:^7.24.2":
   version: 7.24.2
   resolution: "@babel/code-frame@npm:7.24.2"
@@ -2099,7 +2109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mj-studio/react-native-naver-map@npm:^1.2.0":
+"@mj-studio/react-native-naver-map@npm:^1.5.6":
   version: 1.5.6
   resolution: "@mj-studio/react-native-naver-map@npm:1.5.6"
   dependencies:
@@ -3119,11 +3129,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ProjectName@workspace:."
   dependencies:
+    "@azesmway/react-native-unity": ^1.0.9
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
     "@mj-studio/js-util": ^1.0.34
-    "@mj-studio/react-native-naver-map": ^1.2.0
+    "@mj-studio/react-native-naver-map": ^1.5.6
     "@react-native/babel-preset": 0.74.83
     "@react-native/eslint-config": 0.74.83
     "@react-native/metro-config": 0.74.83
