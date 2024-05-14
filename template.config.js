@@ -8,9 +8,4 @@ module.exports = {
 
   // Path to script, which will be executed after init
   // postInitScript: "./script.js",
-  project: {
-    ios: {
-      automaticPodsInstallation: true,
-    },
-  },
 };
