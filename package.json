@@ -1,0 +1,8 @@
+{
+  "name": "RNTemplate",
+  "version": "0.0.1",
+  "description": "React Native Template",
+  "repository": "git@github.com:hypercloud-kr/RNTemplate.git",
+  "author": "Hyper Cloud",
+  "license": "MIT"
+}
