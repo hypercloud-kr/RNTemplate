@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 
-import UnityView from '@azesmway/react-native-unity';
+// import UnityView from '@azesmway/react-native-unity';
 import {View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 type RootStackParamList = {
@@ -15,22 +15,22 @@ interface IMessage {
 }
 
 const UnityScreen = ({route}: {route: UnityScreenRouteProp}) => {
-  const unityRef = useRef<UnityView>(null);
+  // const unityRef = useRef<UnityView>(null);
   const {id} = route.params;
 
   useEffect(() => {
-    if (unityRef?.current) {
-      const message: IMessage = {
-        gameObject: 'UnityMessageManager',
-        methodName: 'onRNMessage',
-        message: JSON.stringify({name: 'SetDestination', data: id}),
-      };
-      unityRef.current.postMessage(
-        message.gameObject,
-        message.methodName,
-        message.message,
-      );
-    }
+    // if (unityRef?.current) {
+    //   const message: IMessage = {
+    //     gameObject: 'UnityMessageManager',
+    //     methodName: 'onRNMessage',
+    //     message: JSON.stringify({name: 'SetDestination', data: id}),
+    //   };
+    //   unityRef.current.postMessage(
+    //     message.gameObject,
+    //     message.methodName,
+    //     message.message,
+    //   );
+    // }
   }, [id]);
 
   const handleUnityMessage = (result: any) => {
@@ -39,12 +39,12 @@ const UnityScreen = ({route}: {route: UnityScreenRouteProp}) => {
 
   return (
     <View style={{flex: 1}}>
-      <UnityView
+      {/* <UnityView
         ref={unityRef}
         onUnityMessage={handleUnityMessage} // Set the callback function
         fullScreen={false}
         style={{flex: 1}}
-      />
+      /> */}
     </View>
   );
 };

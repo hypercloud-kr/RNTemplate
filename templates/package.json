@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@azesmway/react-native-unity": "^1.0.9",
     "@mj-studio/js-util": "^1.0.34",
     "@mj-studio/react-native-naver-map": "^1.5.6",
     "@react-navigation/native": "^6.1.17",

@@ -22,7 +22,7 @@ allprojects {
     repositories {
         maven { url 'https://www.jitpack.io' }
         maven { url "https://repository.map.naver.com/archive/maven" }
-        flatDir { dirs "${project(':unityLibrary').projectDir}/libs" }
+        // flatDir { dirs "${project(':unityLibrary').projectDir}/libs" }
     }
 }
 
