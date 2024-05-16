@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 
 // import UnityView from '@azesmway/react-native-unity';
-import {View} from 'react-native';
+import {Text, View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 type RootStackParamList = {
   Unity: {id: number}; // Define the shape of the params for the Unity screen
@@ -38,7 +38,13 @@ const UnityScreen = ({route}: {route: UnityScreenRouteProp}) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Text>유니티 설정이 필요합니다.</Text>
       {/* <UnityView
         ref={unityRef}
         onUnityMessage={handleUnityMessage} // Set the callback function
