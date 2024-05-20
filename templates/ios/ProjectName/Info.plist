@@ -25,7 +25,10 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NMFClientId</key>
+	<!-- donald -->
 	<string>loi5w6vt28</string>
+	<!-- xr_team_1 -->
+	<!-- <string>92ta6poq6p</string> -->>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

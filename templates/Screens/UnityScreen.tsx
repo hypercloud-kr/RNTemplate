@@ -1,5 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 
+// FIXME: Unity 연동시 주석해제
 // import UnityView from '@azesmway/react-native-unity';
 import {Text, View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
@@ -15,10 +16,12 @@ interface IMessage {
 }
 
 const UnityScreen = ({route}: {route: UnityScreenRouteProp}) => {
+  // FIXME: Unity 연동시 주석해제
   // const unityRef = useRef<UnityView>(null);
   const {id} = route.params;
 
   useEffect(() => {
+    // FIXME: Unity 연동시 주석해제
     // if (unityRef?.current) {
     //   const message: IMessage = {
     //     gameObject: 'UnityMessageManager',
@@ -41,10 +44,13 @@ const UnityScreen = ({route}: {route: UnityScreenRouteProp}) => {
     <View
       style={{
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        // FIXME: Unity 연동시 justifyContent, alignItems style 삭제
+        // justifyContent: 'center',
+        // alignItems: 'center',
       }}>
+      {/* FIXME: Unity 연동시 아래 Text 삭제 */}
       <Text>유니티 설정이 필요합니다.</Text>
+      {/* FIXME: Unity 연동시 주석해제 */}
       {/* <UnityView
         ref={unityRef}
         onUnityMessage={handleUnityMessage} // Set the callback function
