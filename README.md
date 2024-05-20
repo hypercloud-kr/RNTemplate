@@ -59,6 +59,7 @@ yarn android
 
 기존에 React native 초기 화면과 다른 template 으로 커스텀된 MainView 를 볼수 있다. 또한 카메라, 위치에 대한 권한을 요청 한다.
 (후에 메인 화면 작업예정)
+
 ![AOS Step Image](docs/aos_step3.png)
 
 ### iOS
