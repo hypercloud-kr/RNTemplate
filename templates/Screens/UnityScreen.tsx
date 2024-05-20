@@ -45,8 +45,8 @@ const UnityScreen = ({route}: {route: UnityScreenRouteProp}) => {
       style={{
         flex: 1,
         // FIXME: Unity 연동시 justifyContent, alignItems style 삭제
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
       {/* FIXME: Unity 연동시 아래 Text 삭제 */}
       <Text>유니티 설정이 필요합니다.</Text>

@@ -1,1 +1,1 @@
-add ios project
+add ios Framework this project
