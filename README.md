@@ -142,17 +142,17 @@ NaverCloud 에 iOS Bundle ID 를 추가한다.
 
 ### [VPS_Mock-up_RN Unity 빌드 셋팅하기](https://github.com/hypercloud-kr/vps-RN-front/blob/main/README.md)
 
-### Android
-
-1. `unity/android/builds/android` 경로에 unityLibrary 폴더를 추가 한다.
-2. unity 연동을 위한 React native 라이브버리를 추가 한다.
+unity 연동을 위한 React native 라이브러리를 추가 한다.
 
 ```bash
 yarn add @azesmway/react-native-unity
 ```
 
-3. 프로젝트 내에서 "FIXME" 키워드로 검색하여 Unity 연동과 관련된 코드 주석을 해제하고 가이드 내용 삭제 한다.
-4. gradlew 초기화 한다.
+### Android
+
+1. `unity/android/builds/android` 경로에 unityLibrary 폴더를 추가 한다.
+2. 프로젝트 내에서 "FIXME" 키워드로 검색하여 Unity 연동과 관련된 코드 주석을 해제하고 가이드 내용 삭제 한다.
+3. gradlew 초기화 한다.
 
 ```bash
 cd android && ./gradlew clean && cd ..
@@ -165,6 +165,20 @@ yarn android
 ```
 
 ### iOS
+
+1. `unity/android/builds/ios` 경로에 `UnityFramework.framework` 폴더를 추가 한다.
+2. 프로젝트 내에서 "FIXME" 키워드로 검색하여 Unity 연동과 관련된 코드 주석을 해제하고 가이드 내용 삭제 한다.
+3. Pods 재설치
+
+```
+cd ios && rm -rf Pods && rm -f Podfile.lock && npx pod-install && cd ..
+```
+
+4. 실행, 첫 빌드는 다소 시간이 소요된다.
+
+```bash
+yarn ios
+```
 
 ---
 
