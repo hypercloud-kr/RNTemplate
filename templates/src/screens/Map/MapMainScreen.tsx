@@ -60,7 +60,7 @@ type pointType = {
   id: number;
 };
 
-export default function MapScreen({navigation}) {
+export default function MapMainScreen({navigation}) {
   const ref = useRef<NaverMapViewRef>(null);
 
   const [camera, setCamera] = useState(Cameras.HyperCloud);
