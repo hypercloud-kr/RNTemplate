@@ -3,24 +3,45 @@ import styled from 'styled-components/native';
 import Swiper from 'react-native-swiper';
 
 import {
-  Button,
   ScrollView,
   StatusBar,
   useColorScheme,
   View,
   Platform,
-  Text,
-  StyleSheet,
 } from 'react-native';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {requestMultiple, PERMISSIONS} from 'react-native-permissions';
+import CategorySelect from '../../components/CategorySelect';
+import ContentsButton from '../../components/ContentsButton';
 
 export default function HomeMainScreen({navigation}): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const contentsData = [
+    {
+      title: 'AR Earth SAVERS',
+      more: false,
+      image: 'test2',
+      contens: 'AR 지구 지킴이',
+    },
+
+    {
+      title: 'AR PROJECT1',
+      more: false,
+      image: 'test3',
+      contens: 'AR 프로젝트1',
+    },
+    {
+      title: 'AR PROJECT2',
+      more: false,
+      image: 'test4',
+      contens: 'AR 프로젝트2',
+    },
+  ];
 
   useEffect(() => {
     requestCameraPermission();
@@ -49,10 +70,6 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
     }
   };
 
-  const goToSceondScreen = () => {
-    navigation.navigate('Map');
-  };
-
   return (
     <View style={{flex: 1, width: '100%'}}>
       <StatusBar
@@ -60,51 +77,58 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView style={backgroundStyle}>
-        <Swiper style={styles.wrapper} showsButtons={true}>
-          <View style={styles.slide1}>
-            <Text style={styles.text}>Hello Swiper</Text>
-          </View>
-          <View style={styles.slide2}>
-            <Text style={styles.text}>Beautiful</Text>
-          </View>
-          <View style={styles.slide3}>
-            <Text style={styles.text}>And simple</Text>
-          </View>
-        </Swiper>
+        <SwiperWrapper>
+          <Swiper
+            activeDotColor="white"
+            style={{height: 240}}
+            autoplay
+            autoplayTimeout={5}
+            showsButtons={false}>
+            <SlideItem>
+              <SlideItemText>Main Swiper View 1</SlideItemText>
+            </SlideItem>
+            <SlideItem>
+              <SlideItemText>Main Swiper View 2</SlideItemText>
+            </SlideItem>
+            <SlideItem>
+              <SlideItemText>Main Swiper View 3</SlideItemText>
+            </SlideItem>
+          </Swiper>
+        </SwiperWrapper>
+        <CategoryWarpper>
+          <Title>길찾기</Title>
+          <CategorySelect />
+        </CategoryWarpper>
+        {contentsData.map((item, index) => (
+          <ContentsButton item={item} key={index} />
+        ))}
       </ScrollView>
     </View>
   );
 }
-const styles = StyleSheet.create({
-  wrapper: {
-    height: 200,
-  },
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-});
 
-const Section = styled.View`
-  height: 200px;
-  border: 1px solid red;
+const Title = styled.Text`
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+`;
+
+const SlideItemText = styled.Text`
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+`;
+
+const SlideItem = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #1cb8b8;
+`;
+
+const SwiperWrapper = styled.View``;
+
+const CategoryWarpper = styled.View`
+  margin: 20px 10px;
 `;
