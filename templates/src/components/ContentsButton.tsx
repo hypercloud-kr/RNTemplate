@@ -27,7 +27,7 @@ export default function ContentsButton({item}: any) {
         <FastImage
           style={{flex: 1, borderRadius: 10}}
           source={imageSource}
-          resizeMode={FastImage.resizeMode.cover}
+          resizeMode={FastImage.resizeMode.stretch}
         />
       </ContentWrapper>
     </Wrapper>
@@ -45,7 +45,7 @@ const HeaderWrapper = styled.View`
 `;
 
 const ContentWrapper = styled.TouchableOpacity`
-  height: 100px;
+  height: 120px;
   margin: 10px 0;
   padding: 0 5px;
 `;

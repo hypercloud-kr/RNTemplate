@@ -1539,10 +1539,10 @@
   resolved "https://registry.yarnpkg.com/@mj-studio/js-util/-/js-util-1.1.5.tgz#8b4fc777380bf75a42f7f8048f12e8b2bc511cbd"
   integrity sha512-utMMDb+2ROBvmUwdktd2JBLvQTpNKYQR0WTrzTlGN6HEWzmY/4Dta4BOszOf3rAgbGA2xC8oALE8tiuadLxEkg==
 
-"@mj-studio/react-native-naver-map@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@mj-studio/react-native-naver-map/-/react-native-naver-map-1.5.6.tgz#add2ec5ddbd11e63974c4f067f565c5b36c88282"
-  integrity sha512-KEWSIcj4WNkozVvCtEn+nttrG1f1jc4xTF+ShQilhLYLWzHm2eWhlg7Du0duaKixwF/iV0ZNHJmZ/9GZVSinyw==
+"@mj-studio/react-native-naver-map@1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@mj-studio/react-native-naver-map/-/react-native-naver-map-1.5.4.tgz#a2c89d2aa9f6648c2338647a27cd0c56475dd793"
+  integrity sha512-UQhZ9qTcr3X1WJguBIXRqtVFA3TsRVlnUjI90N9FvcrJ4VUjX3tZSdXErv5G2MzR5L4uUrvKDj0BrBR1OiA5YQ==
   dependencies:
     object-hash "^3.0.0"
 
@@ -1728,6 +1728,13 @@
     graceful-fs "^4.1.3"
     prompts "^2.4.2"
     semver "^7.5.2"
+
+"@react-native-seoul/kakao-login@^5.4.1":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@react-native-seoul/kakao-login/-/kakao-login-5.4.1.tgz#dc3fa6af4ed32fa08cb1a16a4fc598ee4987a8ee"
+  integrity sha512-ezhkX3AsJZ3Qf3b0QDJEpPIvWDqxuz2N9lKd9g90ULpzaYa+d0r7UdfCe4h+/Fo859t7t0vFSXqIbLLIHSlxFw==
+  dependencies:
+    dooboolab-welcome "^1.3.2"
 
 "@react-native/assets-registry@0.74.83":
   version "0.74.83"
@@ -3200,6 +3207,11 @@ doctrine@^3.0.0:
   integrity sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
   dependencies:
     esutils "^2.0.2"
+
+dooboolab-welcome@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/dooboolab-welcome/-/dooboolab-welcome-1.3.2.tgz#4928595312f0429b4ea1b485ba8767bae6acdab7"
+  integrity sha512-2NbMaIIURElxEf/UAoVUFlXrO+7n/FRhLCiQlk4fkbGRh9cJ3/f8VEMPveR9m4Ug2l2Zey+UCXjd6EcBqHJ5bw==
 
 ee-first@1.1.1:
   version "1.1.1"
