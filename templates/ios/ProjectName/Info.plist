@@ -29,6 +29,10 @@
 	<string>loi5w6vt28</string>
 	<!-- xr_team_1 -->
 	<!-- <string>92ta6poq6p</string> -->
+	<key>UIAppFonts</key>
+	<array>
+		<string>MaterialCommunityIcons.ttf</string>
+	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components/native';
 import Swiper from 'react-native-swiper';
-
+import FastImage from 'react-native-fast-image';
 import {
   ScrollView,
   StatusBar,
@@ -85,13 +85,28 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
             autoplayTimeout={5}
             showsButtons={false}>
             <SlideItem>
-              <SlideItemText>Main Swiper View 1</SlideItemText>
+              <FastImage
+                style={{height: '100%', width: '100%'}}
+                source={require('../../assets/main1.png')}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+              {/* <SlideItemText>Main Swiper View 1</SlideItemText> */}
             </SlideItem>
             <SlideItem>
-              <SlideItemText>Main Swiper View 2</SlideItemText>
+              <FastImage
+                style={{height: '100%', width: '100%'}}
+                source={require('../../assets/main2.png')}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+              {/* <SlideItemText>Main Swiper View 2</SlideItemText> */}
             </SlideItem>
             <SlideItem>
-              <SlideItemText>Main Swiper View 3</SlideItemText>
+              <FastImage
+                style={{height: '100%', width: '100%'}}
+                source={require('../../assets/main3.png')}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+              {/* <SlideItemText>Main Swiper View 3</SlideItemText> */}
             </SlideItem>
           </Swiper>
         </SwiperWrapper>
