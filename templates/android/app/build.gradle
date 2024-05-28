@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply plugin: "com.google.gms.google-services"
 
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
@@ -126,7 +127,9 @@ dependencies {
     implementation project(':unityLibrary')
     implementation files("${project(':unityLibrary').projectDir}/libs/unity-classes.jar")
 
-    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-vector-icons')    
+    implementation platform('com.google.firebase:firebase-bom:33.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
     
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

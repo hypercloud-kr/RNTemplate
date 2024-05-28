@@ -45,7 +45,7 @@ const HeaderWrapper = styled.View`
 `;
 
 const ContentWrapper = styled.TouchableOpacity`
-  height: 120px;
+  height: 105px;
   margin: 10px 0;
   padding: 0 5px;
 `;

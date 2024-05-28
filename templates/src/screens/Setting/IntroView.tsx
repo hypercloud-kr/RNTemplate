@@ -20,6 +20,7 @@ export default IntroView;
 
 const styles = StyleSheet.create({
   container: {
+    margin: 10,
     flex: 1,
     borderWidth: 1,
     borderColor: '#FEE500',

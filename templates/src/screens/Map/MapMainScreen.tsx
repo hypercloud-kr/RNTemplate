@@ -78,7 +78,7 @@ export default function MapMainScreen({navigation}) {
   const points: Array<pointType> = [
     {
       id: 69,
-      name: 'Sally3',
+      name: 'Sally',
       latitude: 37.516124,
       longitude: 127.0221399,
     },

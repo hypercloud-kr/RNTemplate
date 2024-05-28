@@ -12,7 +12,7 @@ import {
 import ResultView from './IntroView';
 
 const SettingMainScreen = () => {
-  const [result, setResult] = useState<string>('');
+  const [result, setResult] = useState<string>('카카오 로그인을 해주세요.');
 
   const signInWithKakao = async (): Promise<void> => {
     try {

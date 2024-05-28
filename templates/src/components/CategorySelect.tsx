@@ -2,18 +2,20 @@ import React from 'react';
 import {ScrollView, Text} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
 const categories = [
-  {name: 'Sally', bgColor: '#FFDDDD'},
-  {name: 'Dante', bgColor: '#DDAAFF'},
-  {name: 'Woody', bgColor: '#AAFFDD'},
-  {name: 'Table', bgColor: '#FFDDAA'},
-  {name: 'WhiteHall', bgColor: '#AADDFF'},
-  {name: 'Toilet', bgColor: '#DDFFAA'},
-  {name: 'Terrace', bgColor: '#FFAAAA'},
+  {name: 'Sally', id: 69, bgColor: '#FFDDDD'},
+  {name: 'Dante', id: 51, bgColor: '#DDAAFF'},
+  {name: 'Woody', id: 85, bgColor: '#AAFFDD'},
+  {name: 'Table', id: 81, bgColor: '#FFDDAA'},
+  {name: 'WhiteHall', id: 94, bgColor: '#AADDFF'},
+  {name: 'Toilet', id: 88, bgColor: '#DDFFAA'},
+  {name: 'Terrace', id: 59, bgColor: '#FFAAAA'},
 ];
 
 const CategorySelect = () => {
+  const navigation = useNavigation();
   const imageMap = {
     Dante: require('../assets/Donald.png'),
     Sally: require('../assets/Bona.png'),
@@ -22,6 +24,10 @@ const CategorySelect = () => {
     WhiteHall: require('../assets/Will.png'),
     Toilet: require('../assets/Donald.png'),
     Terrace: require('../assets/Bona.png'),
+  };
+
+  const goToUnity = (id: number) => {
+    navigation.navigate('CommonStack', {screen: 'Unity', params: {id}});
   };
 
   return (
@@ -34,7 +40,9 @@ const CategorySelect = () => {
               source={require('../assets/Dante.png')}
               resizeMode={FastImage.resizeMode.center}
             />
-            <CircleButton bgColor={category.bgColor}>
+            <CircleButton
+              bgColor={category.bgColor}
+              onPress={() => goToUnity(category.id)}>
               <FastImage
                 style={{
                   backgroundColor: 'white',
@@ -46,9 +54,6 @@ const CategorySelect = () => {
                 source={imageMap[category.name]}
                 resizeMode={FastImage.resizeMode.contain}
               />
-              {/* <Text style={{fontSize: 18, fontWeight: 500, color: '#333'}}>
-                {category.name.substring(0, 1)}
-              </Text> */}
             </CircleButton>
             <Text style={{color: 'white', fontWeight: 400}}>
               {category.name}

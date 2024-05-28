@@ -8,12 +8,19 @@ import {
   useColorScheme,
   View,
   Platform,
+  Touchable,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {requestMultiple, PERMISSIONS} from 'react-native-permissions';
 import CategorySelect from '../../components/CategorySelect';
 import ContentsButton from '../../components/ContentsButton';
+// import messaging from '@react-native-firebase/messaging';
+import {Alert} from 'react-native';
+import {MMKV} from 'react-native-mmkv';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+
+const storage = new MMKV();
 
 export default function HomeMainScreen({navigation}): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -43,9 +50,10 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
     },
   ];
 
-  useEffect(() => {
-    requestCameraPermission();
-  }, []);
+  const useToken = () => {
+    const username = storage.getString('token');
+    console.log(username);
+  };
 
   const requestCameraPermission = async () => {
     if (Platform.OS === 'ios') {
@@ -69,6 +77,51 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
       });
     }
   };
+
+  // const NotificationListner = () => {
+  //   messaging().onNotificationOpenedApp(remoteMessage => {
+  //     console.log(
+  //       'Notification caused app to open from background state:',
+  //       remoteMessage,
+  //     );
+  //     // navigation.navigate('HomeMainScreen');
+  //   });
+
+  //   messaging()
+  //     .getInitialNotification()
+  //     .then(remoteMessage => {
+  //       if (remoteMessage) {
+  //         console.log(
+  //           'Notification caused app to open from quit state:',
+  //           remoteMessage.notification,
+  //         );
+  //         // navigation.navigate('HomeMainScreen');
+  //       }
+  //     });
+
+  //   messaging().onMessage(async remoteMessage => {
+  //     console.log('A new FCM message arrived!', remoteMessage);
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   const getToken = async () => {
+  //     try {
+  //       const token = await messaging().getToken();
+  //       storage.set('token', token);
+  //       const userToken = storage.getString('token');
+  //       console.log(userToken);
+  //     } catch (error) {
+  //       console.log('error', error);
+  //     }
+  //   };
+  //   getToken();
+  // }, []);
+
+  useEffect(() => {
+    requestCameraPermission();
+    // NotificationListner();
+  }, []);
 
   return (
     <View style={{flex: 1, width: '100%'}}>
@@ -117,6 +170,10 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
         {contentsData.map((item, index) => (
           <ContentsButton item={item} key={index} />
         ))}
+        {/* <TouchableOpacity
+          style={{height: 100, width: 100, backgroundColor: 'red'}}
+          onPress={useToken}
+        /> */}
       </ScrollView>
     </View>
   );
@@ -127,12 +184,6 @@ const Title = styled.Text`
   font-size: 20px;
   font-weight: bold;
   color: white;
-`;
-
-const SlideItemText = styled.Text`
-  color: #fff;
-  font-size: 30px;
-  font-weight: bold;
 `;
 
 const SlideItem = styled.View`

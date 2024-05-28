@@ -4,18 +4,19 @@ import {createStackNavigator} from '@react-navigation/stack';
 // import {Example, Startup} from '@/screens';
 // import {useTheme} from '@/theme';
 // import type {ApplicationStackParamList} from '@/types/navigation';
-import HomeMainScreen from '../../screens/Home/HomeMainScreen';
-import CommonNavigation from './CommonNavigation';
+
+import WebViewScreen from '../../screens/Content/WebViewScreen';
+import UnityScreen from '../../screens/Unity/UnityScreen';
 
 const Stack = createStackNavigator();
 
-function HomeNavigation() {
+function CommonNavigation() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="HomeMain" component={HomeMainScreen} />
-      <Stack.Screen name="CommonStack" component={CommonNavigation} />
+      <Stack.Screen name="WebView" component={WebViewScreen} />
+      <Stack.Screen name="Unity" component={UnityScreen} />
     </Stack.Navigator>
   );
 }
 
-export default HomeNavigation;
+export default CommonNavigation;
