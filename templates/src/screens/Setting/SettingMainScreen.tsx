@@ -19,7 +19,7 @@ const SettingMainScreen = () => {
       const token = await login();
       setResult(JSON.stringify(token));
     } catch (err) {
-      console.error('login err', err);
+      setResult('로그인 취소');
     }
   };
 

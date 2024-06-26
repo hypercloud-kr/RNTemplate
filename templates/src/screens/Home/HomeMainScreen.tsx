@@ -8,6 +8,7 @@ import {
   useColorScheme,
   View,
   Platform,
+  NativeModules,
   Touchable,
 } from 'react-native';
 
@@ -16,9 +17,7 @@ import {requestMultiple, PERMISSIONS} from 'react-native-permissions';
 import CategorySelect from '../../components/CategorySelect';
 import ContentsButton from '../../components/ContentsButton';
 // import messaging from '@react-native-firebase/messaging';
-import {Alert} from 'react-native';
 import {MMKV} from 'react-native-mmkv';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const storage = new MMKV();
 
@@ -30,24 +29,23 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
 
   const contentsData = [
     {
-      title: 'AR Earth SAVERS',
+      title: 'AR TimeSale',
       more: false,
       image: 'test2',
-      contens: 'AR 지구 지킴이',
+      contens: 'AR TimeSale',
     },
-
-    {
-      title: 'AR PROJECT1',
-      more: false,
-      image: 'test3',
-      contens: 'AR 프로젝트1',
-    },
-    {
-      title: 'AR PROJECT2',
-      more: false,
-      image: 'test4',
-      contens: 'AR 프로젝트2',
-    },
+    // {
+    //   title: 'AR PROJECT1',
+    //   more: false,
+    //   image: 'test3',
+    //   contens: 'AR 프로젝트1',
+    // },
+    // {
+    //   title: 'AR PROJECT2',
+    //   more: false,
+    //   image: 'test4',
+    //   contens: 'AR 프로젝트2',
+    // },
   ];
 
   const useToken = () => {
@@ -140,7 +138,7 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
             <SlideItem>
               <FastImage
                 style={{height: '100%', width: '100%'}}
-                source={require('../../assets/main1.png')}
+                source={require('../../assets/timesale.png')}
                 resizeMode={FastImage.resizeMode.cover}
               />
               {/* <SlideItemText>Main Swiper View 1</SlideItemText> */}
@@ -151,7 +149,6 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
                 source={require('../../assets/main2.png')}
                 resizeMode={FastImage.resizeMode.cover}
               />
-              {/* <SlideItemText>Main Swiper View 2</SlideItemText> */}
             </SlideItem>
             <SlideItem>
               <FastImage
@@ -159,7 +156,6 @@ export default function HomeMainScreen({navigation}): React.JSX.Element {
                 source={require('../../assets/main3.png')}
                 resizeMode={FastImage.resizeMode.cover}
               />
-              {/* <SlideItemText>Main Swiper View 3</SlideItemText> */}
             </SlideItem>
           </Swiper>
         </SwiperWrapper>

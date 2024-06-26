@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 
-import {View} from 'react-native';
+import {NativeModules, View} from 'react-native';
 import {
   type MapType,
   type NaverMapViewRef,
@@ -62,7 +62,6 @@ type pointType = {
 
 export default function MapMainScreen({navigation}) {
   const ref = useRef<NaverMapViewRef>(null);
-
   const [camera, setCamera] = useState(Cameras.HyperCloud);
   const [nightMode, setNightMode] = useState(false);
   const [indoor, setIndoor] = useState(true);
@@ -126,8 +125,14 @@ export default function MapMainScreen({navigation}) {
     },
   ];
 
-  const goToUnity = (id: number) => {
-    navigation.navigate('Unity', {id});
+  // const goToUnity = (id: number) => {
+  //   navigation.navigate('Unity', {id});
+  // };
+
+  const moveActivity = (id: number) => {
+    const {CalendarModule} = NativeModules;
+    // CalendarModule.createCalendarEvent('testName', 'testLocation');
+    CalendarModule.goToUnityActivity(id);
   };
 
   return (
@@ -156,7 +161,7 @@ export default function MapMainScreen({navigation}) {
               key={point.id}
               latitude={point.latitude}
               longitude={point.longitude}
-              onTap={() => goToUnity(point.id)}
+              onTap={() => moveActivity(point.id)}
               width={30}
               height={40}
               caption={{

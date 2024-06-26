@@ -122,15 +122,16 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-    
+
     // FIXME: Unity 연동시 주석해제
     implementation project(':unityLibrary')
     implementation files("${project(':unityLibrary').projectDir}/libs/unity-classes.jar")
-
-    implementation project(':react-native-vector-icons')    
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    // implementation fileTree(dir: '../../unity/builds/android/unityLibrary', include: ['*.aar'])
+    implementation project(':react-native-vector-icons')
     implementation platform('com.google.firebase:firebase-bom:33.0.0')
     implementation 'com.google.firebase:firebase-analytics'
-    
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

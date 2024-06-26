@@ -73,17 +73,17 @@ function MainBottomTapNavigator() {
         />
         <Tab.Screen
           name="Content"
-          options={{tabBarIcon: getTabBarIcon('sunglasses')}}
+          options={{tabBarIcon: getTabBarIcon('gamepad-variant')}}
           component={ContentNavigation}
         />
         <Tab.Screen
           name="Map"
-          options={{tabBarIcon: getTabBarIcon('map')}}
+          options={{tabBarIcon: getTabBarIcon('map-marker-radius')}}
           component={MapNavigation}
         />
         <Tab.Screen
           name="Setting"
-          options={{tabBarIcon: getTabBarIcon('cog')}}
+          options={{tabBarIcon: getTabBarIcon('account')}}
           component={SettingNavigation}
         />
       </Tab.Navigator>

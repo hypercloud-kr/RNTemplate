@@ -1,7 +1,9 @@
-import React from 'react';
-import {ScrollView, Text} from 'react-native';
+import React, {useEffect} from 'react';
+import {Platform, ScrollView, StatusBar, Text} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
+import {NativeModules} from 'react-native';
+
 import {useNavigation} from '@react-navigation/native';
 
 const categories = [
@@ -16,6 +18,51 @@ const categories = [
 
 const CategorySelect = () => {
   const navigation = useNavigation();
+  const {CalendarModule, Counter} = NativeModules;
+  // const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
+
+  const onSubmit = async () => {
+    try {
+      const eventId = await CalendarModule.createCalendarEvent(
+        'Party',
+        'My House',
+      );
+      console.log(`Created a new event with id ${eventId}`);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const moveActivity = (id: number) => {
+    if (Platform.OS === 'android') {
+      // CalendarModule.createCalendarEvent(
+      //   'testName',
+      //   'testLocation',
+      //   (error, eventId) => {
+      //     if (error) {
+      //       console.error(`Error found! ${error}`);
+      //     }
+      //     console.log(`event id ${eventId} returned`);
+      //   },
+      // );
+      // CalendarModule.createCalendarEvent(
+      //   'Party',
+      //   'My House',
+      //   (eventId: number) => {
+      //     console.log(`Created a new event with id ${eventId}`);
+      //   },
+      // );
+      // console.log('moveActivity');
+      // console.log(DEFAULT_EVENT_NAME);
+      // CalendarModule.createCalendarEvent('testName', 'testLocation');
+      CalendarModule.goToUnityActivity(id);
+    } else {
+      Counter.increment(id);
+      // RCTCalendarModule.createCalendarEvent('Meeting', 'Office', 1234567890);
+      // goToUnity(id);
+    }
+  };
+
   const imageMap = {
     Dante: require('../assets/Donald.png'),
     Sally: require('../assets/Bona.png'),
@@ -27,8 +74,41 @@ const CategorySelect = () => {
   };
 
   const goToUnity = (id: number) => {
-    navigation.navigate('CommonStack', {screen: 'Unity', params: {id}});
+    moveActivity(id);
+    // navigation.navigate('CommonStack', {screen: 'Unity', params: {id}});
   };
+
+  // useEffect(() => {
+  //   const eventEmitter = new NativeModules.NativeEventEmitter(CalendarModule);
+  //   let eventListener = eventEmitter.addListener('EventReminder', event => {
+  //     console.log(event.eventProperty); // "someValue"
+  //   });
+
+  //   console.log(eventListener);
+  //   // Removes the listener once unmounted
+  //   return () => {
+  //     eventListener.remove();
+  //   };
+  // }, [CalendarModule]);
+
+  const triggerNativeEvent = () => {
+    CalendarModule.triggerEvent();
+  };
+
+  // useEffect(() => {
+  //   // Example call to the native method
+  //   MyLifecycleModule.logLifecycleEvent('App mounted');
+
+  //   return () => {
+  //     // Example call to the native method
+  //     MyLifecycleModule.logLifecycleEvent('App unmounted');
+  //   };
+  // }, [MyLifecycleModule]);
+
+  // useEffect(() => {
+  //   StatusBar.setHidden(true, 'slide');
+  //   return () => {};
+  // }, []);
 
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -42,7 +122,7 @@ const CategorySelect = () => {
             />
             <CircleButton
               bgColor={category.bgColor}
-              onPress={() => goToUnity(category.id)}>
+              onPress={() => moveActivity(categories[index].id)}>
               <FastImage
                 style={{
                   backgroundColor: 'white',
