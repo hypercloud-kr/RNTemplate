@@ -1,7 +1,5 @@
 package com.projectname
 
-import android.content.Intent
-import android.util.Log
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.Promise
@@ -13,10 +11,10 @@ import com.facebook.react.bridge.WritableMap
 import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.hypercloud.connect.HyperCloudConnect
 
-class CalendarModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class HyperCloudConnectModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     private val reactContext: ReactApplicationContext = reactApplicationContext
     override fun getName(): String {
-        return "CalendarModule"
+        return "HyperCloudConnect"
     }
 
     private fun sendEvent(reactContext: ReactContext, eventName: String, params: WritableMap?) {
@@ -44,17 +42,16 @@ class CalendarModule(reactContext: ReactApplicationContext) : ReactContextBaseJa
     }
 
     @ReactMethod
-    fun triggerEvent() {
+    fun triggerEvent(event: String) {
         val params = Arguments.createMap().apply {
-            putString("eventProperty", "someValue")
+            putString("eventProperty", event)
         }
         sendEvent(reactContext, "EventReminder", params)
     }
 
     @ReactMethod
-    fun goToUnityActivity(id: Int) {
-        val context = reactApplicationContext
-        HyperCloudConnect.openUnityView(context, id)
+    fun openARView(id: Int) {
+        HyperCloudConnect.openUnityView(reactApplicationContext, id)
         //        val intent = Intent(context, ARViewActivity::class.java)
         //        intent.putExtra("id", id)
         //        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -78,7 +75,6 @@ class CalendarModule(reactContext: ReactApplicationContext) : ReactContextBaseJa
         myFailureCallback: Callback,
         mySuccessCallback: Callback,
     ) {
-        Log.d("CalendarModule", "Create event called with name: $name and location: $location")
         try {
             val eventId = 1991
             mySuccessCallback.invoke(eventId)
@@ -90,13 +86,11 @@ class CalendarModule(reactContext: ReactApplicationContext) : ReactContextBaseJa
     @ReactMethod
     fun createCalendarEvent(name: String, location: String, callback: Callback) {
         val eventId = 1991
-        Log.d("CalendarModule", "Create event called with name: $name and location: $location")
         callback.invoke(eventId)
     }
 
     @ReactMethod
     fun createCalendarEvent(name: String, location: String) {
-        Log.d("CalendarModule", "Create event called with name: $name and location: $location")
     }
 
     override fun getConstants(): MutableMap<String, Any> {
