@@ -3,6 +3,7 @@ package com.projectname
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.facebook.react.ReactApplication
@@ -10,12 +11,15 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.facebook.react.bridge.WritableMap
-import com.unity3d.player.UnityPlayer
-import com.unity3d.player.UnityPlayerActivity
+//import com.unity3d.player.UnityPlayer
+//import com.unity3d.player.UnityPlayerActivity
 //import com.hyper.mockup.OverrideUnityActivity
 import org.json.JSONObject
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 
-class ARViewActivity : UnityPlayerActivity() {
+
+class ARViewActivity : AppCompatActivity() {
     private var userInfo = ""
     private var updateData = ""
 
@@ -24,10 +28,10 @@ class ARViewActivity : UnityPlayerActivity() {
         setContentView(R.layout.activity_arviewmain)
 
         val mARViewContainer = findViewById<FrameLayout>(R.id.arViewContainer)
-        mUnityPlayer.view.let { player ->
-            (player?.parent as? ViewGroup)?.removeView(player)
-            mARViewContainer.addView(player)
-        }
+        //        mUnityPlayer.view.let { player ->
+        //            (player?.parent as? ViewGroup)?.removeView(player)
+        //            mARViewContainer.addView(player)
+        //        }
 
         val id = intent.getIntExtra("id", 0)
         setDataToUnity(id.toString())
@@ -35,8 +39,18 @@ class ARViewActivity : UnityPlayerActivity() {
 
         val userInfoString: String = intent.getStringExtra("userInfo") ?: "test123"
         createUnityMessage(id).let { sendMessageToUnity(it) }
+
+        // Initialize Button
+        val buttonExample = findViewById<Button>(R.id.buttonExample)
+        buttonExample.setOnClickListener {
+            showMainActivity()
+            // Handle button click here
+            // Example: Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
+            // You can add your logic here
+        }
         // setDataToUnity(userInfoString
         //        sendMessageToReactNative("Hello from Android")
+        Log.d("----->Activity", "onCreate")
     }
 
     //    private fun sendMessageToReactNative(message: String) {
@@ -97,24 +111,48 @@ class ARViewActivity : UnityPlayerActivity() {
     }
 
     private fun sendMessageToUnity(message: String) {
-        UnityPlayer.UnitySendMessage("UnityMessageManager", "onRNMessage", message)
+        //        UnityPlayer.UnitySendMessage("UnityMessageManager", "onRNMessage", message)
     }
 
-    override fun onUnityPlayerUnloaded() {
-        finish()
+    private fun showMainActivity() {
+        //        mUnityPlayer.pause()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
     }
 
-    override fun onUnityPlayerQuitted() {
-        finish()
-    }
+    //    override fun onUnityPlayerUnloaded() {
+    //        //        finish()
+    //    }
+    //
+    //    override fun onUnityPlayerQuitted() {
+    //        //        finish()
+    //    }
 
     override fun onResume() {
-        mUnityPlayer.resume()
         super.onResume()
+        Log.d("----->Activity", "onResume")
+        //        mUnityPlayer.resume()
     }
 
     override fun onPause() {
-        mUnityPlayer.pause()
         super.onPause()
+        //        mUnityPlayer.pause()
+        Log.d("----->Activity", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("----->Activity", "onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("----->Activity", "onRestart")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("----->Activity", "onStart")
     }
 }

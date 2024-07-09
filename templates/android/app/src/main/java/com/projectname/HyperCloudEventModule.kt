@@ -1,23 +1,26 @@
 package com.projectname
 
+import android.util.Log
 import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.Callback
-import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.LifecycleEventListener
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.modules.core.DeviceEventManagerModule
-import com.hypercloud.connect.HyperCloudConnect
+import java.time.format.DateTimeFormatter
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
-class HyperCloudConnectModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+
+class HyperCloudEventModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     private val reactContext: ReactApplicationContext = reactApplicationContext
     override fun getName(): String {
-        return "HyperCloudConnect"
+        return "EventManager"
     }
 
-    private fun sendEvent(reactContext: ReactContext, eventName: String, params: WritableMap?) {
+    fun sendEvent(reactContext: ReactContext, eventName: String, params: WritableMap?) {
         reactContext
             .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
             .emit(eventName, params)
@@ -42,60 +45,39 @@ class HyperCloudConnectModule(reactContext: ReactApplicationContext) : ReactCont
     }
 
     @ReactMethod
-    fun triggerEvent(event: String) {
+    fun triggerEventReminder() {
+        val currentTime = getCurrentFormattedTime()
         val params = Arguments.createMap().apply {
-            putString("eventProperty", event)
+            putString("name", "test event")
+            putString("location", "Seoul")
+            putString("date", currentTime)
         }
-        sendEvent(reactContext, "EventReminder", params)
+        sendEvent(reactContext, "onEventReminder", params)
     }
 
-    @ReactMethod
-    fun openARView(id: Int) {
-        HyperCloudConnect.openUnityView(reactApplicationContext, id)
-        //        val intent = Intent(context, ARViewActivity::class.java)
-        //        intent.putExtra("id", id)
-        //        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        //        context.startActivity(intent)
+    fun getCurrentFormattedTime(): String {
+        val koreanTimeZone = ZoneId.of("Asia/Seoul")
+        val currentKoreanDateTime = ZonedDateTime.now(koreanTimeZone)
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        return currentKoreanDateTime.format(formatter)
     }
 
-    @ReactMethod
-    fun createCalendarEvent(name: String, location: String, promise: Promise) {
-        try {
-            val eventId = 19910815
-            promise.resolve(eventId)
-        } catch (e: Throwable) {
-            promise.reject("Create Event Error", e)
+    private val lifecycleEventListener = object : LifecycleEventListener {
+        override fun onHostResume() {
+            Log.d("LifecycleModule", "onHostResume")
         }
-    }
 
-    @ReactMethod
-    fun createCalendarEvent(
-        name: String,
-        location: String,
-        myFailureCallback: Callback,
-        mySuccessCallback: Callback,
-    ) {
-        try {
-            val eventId = 1991
-            mySuccessCallback.invoke(eventId)
-        } catch (e: Exception) {
-            myFailureCallback.invoke(e.message)
+        override fun onHostPause() {
+            Log.d("LifecycleModule", "onHostPause")
+        }
+
+        override fun onHostDestroy() {
+            Log.d("LifecycleModule", "onHostDestroy")
         }
     }
 
-    @ReactMethod
-    fun createCalendarEvent(name: String, location: String, callback: Callback) {
-        val eventId = 1991
-        callback.invoke(eventId)
+    init {
+        reactContext.addLifecycleEventListener(lifecycleEventListener)
     }
-
-    @ReactMethod
-    fun createCalendarEvent(name: String, location: String) {
-    }
-
-    override fun getConstants(): MutableMap<String, Any> {
-        return hashMapOf("DEFAULT_EVENT_NAME" to "New Event")
-    }
-    // ---------------------------------------------------------------------------
 }
 

@@ -119,15 +119,25 @@ android {
     }
 }
 
+def aarDir = file('../../unity/builds/android/unityLibrary/')
+
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
     // FIXME: Unity 연동시 주석해제
-    implementation project(':unityLibrary')
-    implementation files("${project(':unityLibrary').projectDir}/libs/unity-classes.jar")
-    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
-    // implementation fileTree(dir: '../../unity/builds/android/unityLibrary', include: ['*.aar'])
+    //    implementation project(':unityLibrary')
+    //    implementation files("${project(':unityLibrary').projectDir}/libs/unity-classes.jar")
+    //    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    //    implementation fileTree(dir: '../../unity/builds/android/unityLibrary', include: ['*.aar'])
+
+    implementation fileTree(dir: aarDir, include: ['arcore_client.aar'])
+    implementation fileTree(dir: aarDir, include: ['ARPresto.aar'])
+    implementation fileTree(dir: aarDir, include: ['HyperXRConnect-release.aar'])
+    implementation fileTree(dir: aarDir, include: ['unityandroidpermissions.aar'])
+    implementation fileTree(dir: aarDir, include: ['UnityARCore.aar'])
+    implementation fileTree(dir: aarDir, include: ['unityLibrary-release.aar'])
+
     implementation project(':react-native-vector-icons')
     implementation platform('com.google.firebase:firebase-bom:33.0.0')
     implementation 'com.google.firebase:firebase-analytics'

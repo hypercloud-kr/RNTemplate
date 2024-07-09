@@ -6,19 +6,43 @@
 //
 
 import Foundation
-import HyperCloudConnect
+import HyperXRConnect
+import React
 
-@objc(Counter)
-class Counter: NSObject{
+@objc(HyperCloudConnectIOS)
+class HyperCloudConnectIOS: NSObject{
   override init() {
     super.init()
-    HyperCloudConnect.initialize()
+    HyperCloudConnect.shared.initialize()
   }
   
-  private var count = 0;
+  @objc(openARView:)
+  func openARView(withNodeId nodeId:Int){
+    DispatchQueue.main.async {
+      HyperCloudConnect.shared.showUnityView(nodeId: nodeId)
+    }
+  }
   
-  @objc(increment:)
-  func increment(withNodeId nodeId:Int){
-    HyperCloudConnect.showUnityView(nodeId: nodeId)
+  @objc(closeARView)
+  func closeARView(){
+    DispatchQueue.main.async {
+      HyperCloudConnect.shared.closeUnityView()
+    }
+  }
+}
+
+@objc(EventManagerIOS)
+class EventManagerIOS: RCTEventEmitter {
+
+  override static func requiresMainQueueSetup() -> Bool {
+    return true
+  }
+
+  override func supportedEvents() -> [String]! {
+    return ["onEventReminder"]
+  }
+  
+  @objc func triggerEventReminder() {
+    sendEvent(withName: "onEventReminder", body: ["name": "Test Event", "location": "Test Location", "date": NSNumber(value: Date().timeIntervalSince1970)])
   }
 }

@@ -14,8 +14,8 @@ export default function ContentsButton({item}: any) {
   const imageSource = imageMap[item.image];
 
   const moveActivity = (id: number) => {
-    const {CalendarModule} = NativeModules;
-    CalendarModule.goToUnityActivity(id);
+    // const {HyperCloudConnect} = NativeModules;
+    // HyperCloudConnect.goToUnityActivity(id);
   };
 
   return (

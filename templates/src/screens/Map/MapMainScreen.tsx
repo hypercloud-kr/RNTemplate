@@ -130,9 +130,8 @@ export default function MapMainScreen({navigation}) {
   // };
 
   const moveActivity = (id: number) => {
-    const {CalendarModule} = NativeModules;
-    // CalendarModule.createCalendarEvent('testName', 'testLocation');
-    CalendarModule.goToUnityActivity(id);
+    // const {HyperCloudConnect} = NativeModules;
+    // HyperCloudConnect.goToUnityActivity(id);
   };
 
   return (

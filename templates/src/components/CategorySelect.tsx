@@ -1,114 +1,60 @@
 import React, {useEffect} from 'react';
-import {Platform, ScrollView, StatusBar, Text} from 'react-native';
+import {ScrollView, Text, NativeEventEmitter, Platform} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
-import {NativeModules} from 'react-native';
-
-import {useNavigation} from '@react-navigation/native';
+import {ARViewModule, EventModule} from '../modules/HCCModule';
+// import {openARView, multiply} from 'react-native-hyper-view';
 
 const categories = [
-  {name: 'Sally', id: 69, bgColor: '#FFDDDD'},
-  {name: 'Dante', id: 51, bgColor: '#DDAAFF'},
-  {name: 'Woody', id: 85, bgColor: '#AAFFDD'},
-  {name: 'Table', id: 81, bgColor: '#FFDDAA'},
-  {name: 'WhiteHall', id: 94, bgColor: '#AADDFF'},
-  {name: 'Toilet', id: 88, bgColor: '#DDFFAA'},
-  {name: 'Terrace', id: 59, bgColor: '#FFAAAA'},
+  {name: 'Vincent', id: 2, bgColor: '#FFDDDD'},
+  {name: 'Lauren', id: 3, bgColor: '#DDAAFF'},
+  {name: 'Ollie', id: 5, bgColor: '#AAFFDD'},
+  {name: 'Jun', id: 10, bgColor: '#FFDDAA'},
+  {name: 'Whale', id: 14, bgColor: '#AADDFF'},
+  {name: 'Liam', id: 15, bgColor: '#DDFFAA'},
 ];
 
 const CategorySelect = () => {
-  const navigation = useNavigation();
-  const {CalendarModule, Counter} = NativeModules;
-  // const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
-
-  const onSubmit = async () => {
-    try {
-      const eventId = await CalendarModule.createCalendarEvent(
-        'Party',
-        'My House',
-      );
-      console.log(`Created a new event with id ${eventId}`);
-    } catch (e) {
-      console.error(e);
-    }
+  const imageMap = {
+    Vincent: require('../assets/Donald.png'),
+    Lauren: require('../assets/Bona.png'),
+    Ollie: require('../assets/Bella.png'),
+    Jun: require('../assets/Ralph.png'),
+    Whale: require('../assets/Will.png'),
+    Liam: require('../assets/Donald.png'),
   };
+
+  // const fetchData = async () => {
+  //   const res = await multiply(3, 7);
+  //   console.log('------>', res);
+  // };
 
   const moveActivity = (id: number) => {
-    if (Platform.OS === 'android') {
-      // CalendarModule.createCalendarEvent(
-      //   'testName',
-      //   'testLocation',
-      //   (error, eventId) => {
-      //     if (error) {
-      //       console.error(`Error found! ${error}`);
-      //     }
-      //     console.log(`event id ${eventId} returned`);
-      //   },
-      // );
-      // CalendarModule.createCalendarEvent(
-      //   'Party',
-      //   'My House',
-      //   (eventId: number) => {
-      //     console.log(`Created a new event with id ${eventId}`);
-      //   },
-      // );
-      // console.log('moveActivity');
-      // console.log(DEFAULT_EVENT_NAME);
-      // CalendarModule.createCalendarEvent('testName', 'testLocation');
-      CalendarModule.goToUnityActivity(id);
-    } else {
-      Counter.increment(id);
-      // RCTCalendarModule.createCalendarEvent('Meeting', 'Office', 1234567890);
-      // goToUnity(id);
-    }
+    // console.log('moveActivity', id);
+    // triggerNativeEvent();
+    ARViewModule.openARView(id);
+    // fetchData();
+    // openARView(id);
   };
-
-  const imageMap = {
-    Dante: require('../assets/Donald.png'),
-    Sally: require('../assets/Bona.png'),
-    Woody: require('../assets/Bella.png'),
-    Table: require('../assets/Ralph.png'),
-    WhiteHall: require('../assets/Will.png'),
-    Toilet: require('../assets/Donald.png'),
-    Terrace: require('../assets/Bona.png'),
-  };
-
-  const goToUnity = (id: number) => {
-    moveActivity(id);
-    // navigation.navigate('CommonStack', {screen: 'Unity', params: {id}});
-  };
-
-  // useEffect(() => {
-  //   const eventEmitter = new NativeModules.NativeEventEmitter(CalendarModule);
-  //   let eventListener = eventEmitter.addListener('EventReminder', event => {
-  //     console.log(event.eventProperty); // "someValue"
-  //   });
-
-  //   console.log(eventListener);
-  //   // Removes the listener once unmounted
-  //   return () => {
-  //     eventListener.remove();
-  //   };
-  // }, [CalendarModule]);
 
   const triggerNativeEvent = () => {
-    CalendarModule.triggerEvent();
+    EventModule.triggerEventReminder();
   };
 
-  // useEffect(() => {
-  //   // Example call to the native method
-  //   MyLifecycleModule.logLifecycleEvent('App mounted');
+  useEffect(() => {
+    console.log('initializeHyperView useEffect');
+    ARViewModule.initializeHyperView();
+  }, []);
 
-  //   return () => {
-  //     // Example call to the native method
-  //     MyLifecycleModule.logLifecycleEvent('App unmounted');
-  //   };
-  // }, [MyLifecycleModule]);
-
-  // useEffect(() => {
-  //   StatusBar.setHidden(true, 'slide');
-  //   return () => {};
-  // }, []);
+  useEffect(() => {
+    const eventEmitter = new NativeEventEmitter(EventModule);
+    let eventListener = eventEmitter.addListener('onEventReminder', event => {
+      console.log(`[${Platform.OS}] RN Side Event:`, event);
+    });
+    return () => {
+      eventListener.remove();
+    };
+  }, []);
 
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -122,6 +68,8 @@ const CategorySelect = () => {
             />
             <CircleButton
               bgColor={category.bgColor}
+              // onPress={() => goToUnity('ios', 'test')}>
+              // onPress={() => triggerNativeEvent()}>
               onPress={() => moveActivity(categories[index].id)}>
               <FastImage
                 style={{

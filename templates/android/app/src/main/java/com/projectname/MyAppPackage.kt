@@ -14,8 +14,8 @@ class MyAppPackage : ReactPackage {
 
     override fun createNativeModules(reactContext: ReactApplicationContext): MutableList<NativeModule> {
         val modules: MutableList<NativeModule> = mutableListOf()
-        modules.add(CalendarModule(reactContext)) // Add your module instance here
-        modules.add(MyLifecycleModule(reactContext)) // Add your module instance here
+        modules.add(HyperCloudConnectModule(reactContext)) // Add your module instance here
+        modules.add(HyperCloudEventModule(reactContext)) // Add your module instance here
         return modules
     }
 }

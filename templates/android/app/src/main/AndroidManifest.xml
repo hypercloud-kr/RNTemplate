@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,9 +16,11 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="loi5w6vt28" />
-        <!-- <meta-data
+        <!--
+ <meta-data
               android:name="com.naver.maps.map.CLIENT_ID"
-              android:value="92ta6poq6p" /> -->
+              android:value="92ta6poq6p" />
+        -->
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
@@ -27,6 +30,7 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -50,7 +54,15 @@
             android:exported="true"
             android:hardwareAccelerated="false"
             android:label="test"
-            android:process=":Unity"
             android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".TestActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="true"
+            android:label="test"
+            android:launchMode="singleTask"
+            android:screenOrientation="fullSensor"
+            android:windowSoftInputMode="adjustResize" />
     </application>
+
 </manifest>

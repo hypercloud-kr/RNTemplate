@@ -15,13 +15,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-ProjectName-ProjectNameTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ProjectName-ProjectNameTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8310EB162C2562F400A80960 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8310EB152C2562F400A80960 /* Counter.swift */; };
-		8310EB182C2563F700A80960 /* Counter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310EB172C2563F700A80960 /* Counter.m */; };
+		83380D6D2C3BE2E30007DCDB /* HyperXRConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83380D6B2C3BE2E20007DCDB /* HyperXRConnect.framework */; };
+		83380D6E2C3BE2E30007DCDB /* UnityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83380D6C2C3BE2E30007DCDB /* UnityFramework.framework */; };
+		83380D6F2C3BE4750007DCDB /* HyperXRConnect.framework in Sources */ = {isa = PBXBuildFile; fileRef = 83380D6B2C3BE2E20007DCDB /* HyperXRConnect.framework */; };
+		83380D702C3BE4750007DCDB /* UnityFramework.framework in Sources */ = {isa = PBXBuildFile; fileRef = 83380D6C2C3BE2E30007DCDB /* UnityFramework.framework */; };
+		83380D712C3BE4860007DCDB /* ProjectName-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 83C3416D2BFF1D2F003A802E /* ProjectName-Bridging-Header.h */; };
+		83380D722C3BE4860007DCDB /* HyperCloudConnectIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8310EB152C2562F400A80960 /* HyperCloudConnectIOS.swift */; };
+		83380D732C3BE4860007DCDB /* HyperCloudConnectIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310EB172C2563F700A80960 /* HyperCloudConnectIOS.m */; };
 		836202622C25490E0074A85C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836202612C25490E0074A85C /* XCTest.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		83C4091A2C254305006227BD /* HyperCloudConnect.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C409182C254305006227BD /* HyperCloudConnect.xcframework */; };
-		83C4091B2C254305006227BD /* HyperCloudConnect.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83C409182C254305006227BD /* HyperCloudConnect.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		83C4091C2C254306006227BD /* UnityFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C409192C254305006227BD /* UnityFramework.xcframework */; };
-		83C4091D2C254306006227BD /* UnityFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83C409192C254305006227BD /* UnityFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83FC9B5C2C3BEF3A004F8FD8 /* HyperXRConnect.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83380D6B2C3BE2E20007DCDB /* HyperXRConnect.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83FC9B5D2C3BEF3A004F8FD8 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83380D6C2C3BE2E30007DCDB /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		83C4091E2C254306006227BD /* Embed Frameworks */ = {
+		83F14AD72C34DC4A005BD088 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				83C4091D2C254306006227BD /* UnityFramework.xcframework in Embed Frameworks */,
-				83C4091B2C254305006227BD /* HyperCloudConnect.xcframework in Embed Frameworks */,
+				83FC9B5C2C3BEF3A004F8FD8 /* HyperXRConnect.framework in Embed Frameworks */,
+				83FC9B5D2C3BEF3A004F8FD8 /* UnityFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,13 +69,15 @@
 		5B7EB9410499542E8C5724F5 /* Pods-ProjectName-ProjectNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectName-ProjectNameTests.debug.xcconfig"; path = "Target Support Files/Pods-ProjectName-ProjectNameTests/Pods-ProjectName-ProjectNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ProjectName.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProjectName.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ProjectName/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8310EB152C2562F400A80960 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
-		8310EB172C2563F700A80960 /* Counter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Counter.m; sourceTree = "<group>"; };
+		8310EB152C2562F400A80960 /* HyperCloudConnectIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperCloudConnectIOS.swift; sourceTree = "<group>"; };
+		8310EB172C2563F700A80960 /* HyperCloudConnectIOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HyperCloudConnectIOS.m; sourceTree = "<group>"; };
+		83380D6B2C3BE2E20007DCDB /* HyperXRConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperXRConnect.framework; path = ../unity/builds/ios/HyperXRConnect.framework; sourceTree = "<group>"; };
+		83380D6C2C3BE2E30007DCDB /* UnityFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityFramework.framework; path = ../unity/builds/ios/UnityFramework.framework; sourceTree = "<group>"; };
+		83432A1D2C2D108F00B6B902 /* CalendarManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarManager.h; sourceTree = "<group>"; };
+		83432A1E2C2D113900B6B902 /* CalendarManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarManager.m; sourceTree = "<group>"; };
 		836202612C25490E0074A85C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		83C3416C2BFEC279003A802E /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = ../../../../../Desktop/MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		83C3416D2BFF1D2F003A802E /* ProjectName-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectName-Bridging-Header.h"; sourceTree = "<group>"; };
-		83C409182C254305006227BD /* HyperCloudConnect.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HyperCloudConnect.xcframework; path = "../../../../../Downloads/아카이브/HyperCloudConnect.xcframework"; sourceTree = "<group>"; };
-		83C409192C254305006227BD /* UnityFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UnityFramework.xcframework; path = "../../../../../Downloads/아카이브/UnityFramework.xcframework"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ProjectName-ProjectNameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectName-ProjectNameTests.release.xcconfig"; path = "Target Support Files/Pods-ProjectName-ProjectNameTests/Pods-ProjectName-ProjectNameTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EE21E6EE81BDDC456E2FA84D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ProjectName/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -93,8 +98,8 @@
 			files = (
 				836202622C25490E0074A85C /* XCTest.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-ProjectName.a in Frameworks */,
-				83C4091A2C254305006227BD /* HyperCloudConnect.xcframework in Frameworks */,
-				83C4091C2C254306006227BD /* UnityFramework.xcframework in Frameworks */,
+				83380D6D2C3BE2E30007DCDB /* HyperXRConnect.framework in Frameworks */,
+				83380D6E2C3BE2E30007DCDB /* UnityFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,8 +136,10 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				EE21E6EE81BDDC456E2FA84D /* PrivacyInfo.xcprivacy */,
 				83C3416D2BFF1D2F003A802E /* ProjectName-Bridging-Header.h */,
-				8310EB152C2562F400A80960 /* Counter.swift */,
-				8310EB172C2563F700A80960 /* Counter.m */,
+				8310EB152C2562F400A80960 /* HyperCloudConnectIOS.swift */,
+				8310EB172C2563F700A80960 /* HyperCloudConnectIOS.m */,
+				83432A1D2C2D108F00B6B902 /* CalendarManager.h */,
+				83432A1E2C2D113900B6B902 /* CalendarManager.m */,
 			);
 			name = ProjectName;
 			sourceTree = "<group>";
@@ -140,9 +147,9 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83380D6B2C3BE2E20007DCDB /* HyperXRConnect.framework */,
+				83380D6C2C3BE2E30007DCDB /* UnityFramework.framework */,
 				836202612C25490E0074A85C /* XCTest.framework */,
-				83C409182C254305006227BD /* HyperCloudConnect.xcframework */,
-				83C409192C254305006227BD /* UnityFramework.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-ProjectName.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-ProjectName-ProjectNameTests.a */,
@@ -230,12 +237,12 @@
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
-				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				83C4091E2C254306006227BD /* Embed Frameworks */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				83F14AD72C34DC4A005BD088 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -447,10 +454,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8310EB182C2563F700A80960 /* Counter.m in Sources */,
+				83380D712C3BE4860007DCDB /* ProjectName-Bridging-Header.h in Sources */,
+				83380D722C3BE4860007DCDB /* HyperCloudConnectIOS.swift in Sources */,
+				83380D732C3BE4860007DCDB /* HyperCloudConnectIOS.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				8310EB162C2562F400A80960 /* Counter.swift in Sources */,
+				83380D6F2C3BE4750007DCDB /* HyperXRConnect.framework in Sources */,
+				83380D702C3BE4750007DCDB /* UnityFramework.framework in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +544,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 58H6HGR32Z;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/NMapsGeometry/framework\"",
+					"\"${PODS_ROOT}/NMapsMap/framework\"",
+					"\"${PODS_ROOT}/hermes-engine/destroot/Library/Frameworks/universal\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMapsGeometry\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMapsMap\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built\"",
+					"/Users/kimjonng-uk/Project/templateTEST/RNTemplate/templates/unity/builds/ios",
+				);
 				INFOPLIST_FILE = ProjectName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -562,6 +582,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 58H6HGR32Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/NMapsGeometry/framework\"",
+					"\"${PODS_ROOT}/NMapsMap/framework\"",
+					"\"${PODS_ROOT}/hermes-engine/destroot/Library/Frameworks/universal\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMapsGeometry\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMapsMap\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built\"",
+					"/Users/kimjonng-uk/Project/templateTEST/RNTemplate/templates/unity/builds",
+				);
 				INFOPLIST_FILE = ProjectName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
