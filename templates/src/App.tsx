@@ -1,5 +1,5 @@
 import React from 'react';
-// import {SafeAreaView, useColorScheme} from 'react-native';
+import {SafeAreaView, useColorScheme} from 'react-native';
 import 'react-native-gesture-handler';
 // import {Colors} from 'react-native/Libraries/NewAppScreen';
 // import {NavigationContainer} from '@react-navigation/native';
@@ -14,10 +14,11 @@ import MainBottomTapNavigator from './navigators/MainBottomTapNavigator';
 
 function App(): React.JSX.Element {
   // const isDarkMode = useColorScheme() === 'dark';
-  // const backgroundStyle = {
-  //   flex: 1,
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
+  const backgroundStyle = {
+    flex: 1,
+    height: 100,
+    // backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
 
   return (
     <MainBottomTapNavigator />

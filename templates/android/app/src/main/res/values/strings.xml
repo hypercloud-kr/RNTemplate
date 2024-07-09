@@ -2,4 +2,5 @@
     <string name="app_name">ProjectName</string>
     <string name="game_view_content_description">Game view</string>
     <string name="unity_root">unity_root</string>
+    <string name="kakao_app_key">1e7976ce862fdde8947a7eda71ac665b</string>
 </resources>
