@@ -42,15 +42,12 @@ const CategorySelect = () => {
   };
 
   useEffect(() => {
-    console.log('initializeHyperView useEffect');
-    ARViewModule.initializeHyperView();
-  }, []);
-
-  useEffect(() => {
     const eventEmitter = new NativeEventEmitter(EventModule);
     let eventListener = eventEmitter.addListener('onEventReminder', event => {
       console.log(`[${Platform.OS}] RN Side Event:`, event);
+      ARViewModule.sendMessage("Hello Unity! I'm from RN do you copy?");
     });
+
     return () => {
       eventListener.remove();
     };

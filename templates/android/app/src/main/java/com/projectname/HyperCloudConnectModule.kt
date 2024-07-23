@@ -18,11 +18,15 @@ class HyperCloudConnectModule(reactContext: ReactApplicationContext) : ReactCont
     private val reactContext: ReactApplicationContext = reactApplicationContext
     private val hyperCloudEventModule = HyperCloudEventModule(reactContext)  // Instance of HyperCloudEventModule
 
+    init {
+        initializeHyperView()
+    }
+
     override fun getName(): String {
         return "HyperCloudConnect"
     }
 
-    @ReactMethod
+    // @ReactMethod
     fun initializeHyperView() {
         HyperCloudConnect.initialize(reactContext) {
             val currentTime = hyperCloudEventModule.getCurrentFormattedTime()
@@ -36,6 +40,11 @@ class HyperCloudConnectModule(reactContext: ReactApplicationContext) : ReactCont
     @ReactMethod
     fun openARView(id: Int) {
         HyperCloudConnect.openUnityActivity(reactContext, id)
+    }
+
+    @ReactMethod
+    fun sendMessage(message: String) {
+        Log.d("HyperCloudConnectModule", "sendMessage: $message")
     }
 
     companion object {
