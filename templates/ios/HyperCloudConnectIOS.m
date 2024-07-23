@@ -12,6 +12,7 @@
 @interface RCT_EXTERN_MODULE(HyperCloudConnectIOS, NSObject)
 RCT_EXTERN_METHOD(openARView:(NSInteger)nodeId)
 RCT_EXTERN_METHOD(closeARView)
+RCT_EXTERN_METHOD(sendMessage:(NSString *)message)
 @end
 
 @interface RCT_EXTERN_MODULE(EventManagerIOS, RCTEventEmitter)

@@ -14,26 +14,49 @@ class HyperCloudConnectIOS: NSObject{
   override init() {
     super.init()
     HyperCloudConnect.shared.initialize()
+    HyperCloudConnect.shared.recvMessage(onMessage: handleUnityMessage)
   }
   
   @objc(openARView:)
   func openARView(withNodeId nodeId:Int){
-    DispatchQueue.main.async {
-      HyperCloudConnect.shared.showUnityView(nodeId: nodeId)
-    }
+    HyperCloudConnect.shared.showUnityView(nodeId: nodeId)
   }
   
   @objc(closeARView)
   func closeARView(){
-    DispatchQueue.main.async {
-      HyperCloudConnect.shared.closeUnityView()
-    }
+    HyperCloudConnect.shared.closeUnityView()
   }
+  
+  @objc(sendMessage:)
+  func sendMessage(message: String){
+    HyperCloudConnect.shared.sendMessage(message: message)
+  }
+  
+  // Define the message handler function
+  private func handleUnityMessage(_ message: String) {
+      print("Received message from Unity: \(message)")
+      sendEventToJavaScript(message: message)
+  }
+
+  // Function to send events to JavaScript
+  private func sendEventToJavaScript(message: String) {
+      if let eventEmitter = EventManagerIOS.eventEmitter {
+          eventEmitter.sendEvent(withName: "onEventReminder", body: ["message": message])
+      }
+  }
+
 }
 
 @objc(EventManagerIOS)
 class EventManagerIOS: RCTEventEmitter {
+//  static let shared = EventManagerIOS()
+  static var eventEmitter: EventManagerIOS?
 
+  override init() {
+      super.init()
+      EventManagerIOS.eventEmitter = self
+  }
+  
   override static func requiresMainQueueSetup() -> Bool {
     return true
   }
