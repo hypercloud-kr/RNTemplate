@@ -123,8 +123,8 @@ dependencies {
     implementation("com.facebook.react:react-android")
     
     // FIXME: Unity 연동시 주석해제
-    implementation project(':unityLibrary')
-    implementation files("${project(':unityLibrary').projectDir}/libs/unity-classes.jar")
+    // implementation project(':unityLibrary')
+    // implementation files("${project(':unityLibrary').projectDir}/libs/unity-classes.jar")
 
     implementation project(':react-native-vector-icons')
     

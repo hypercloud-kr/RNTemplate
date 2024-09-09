@@ -23,7 +23,7 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
         maven { url "https://repository.map.naver.com/archive/maven" }
         // FIXME: Unity 연동시 주석해제
-        flatDir { dirs "${project(':unityLibrary').projectDir}/libs" }
+        // flatDir { dirs "${project(':unityLibrary').projectDir}/libs" }
     }
 }
 

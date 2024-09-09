@@ -15,16 +15,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azesmway/react-native-unity@npm:^1.0.9":
-  version: 1.0.9
-  resolution: "@azesmway/react-native-unity@npm:1.0.9"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 10c0/671e6c959054422893d5c2ab4d2453c1aa8729a6c3d65ec65fb2d5e633087e5f75addf066106319cdabe882c11a3e4784752230df1ca420d93a72e8ff100bcd7
-  languageName: node
-  linkType: hard
-
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.23.5, @babel/code-frame@npm:^7.24.2":
   version: 7.24.2
   resolution: "@babel/code-frame@npm:7.24.2"
@@ -3220,7 +3210,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ProjectName@workspace:."
   dependencies:
-    "@azesmway/react-native-unity": "npm:^1.0.9"
     "@babel/core": "npm:^7.20.0"
     "@babel/preset-env": "npm:^7.20.0"
     "@babel/runtime": "npm:^7.20.0"
